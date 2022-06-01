@@ -13,7 +13,7 @@ class ShortUrlSerializer(serializers.ModelSerializer):
 
     def get_short_url(self, obj):
         url = reverse(
-            "shortener:retrieve",
+            "shortener:shortener-detail",
             kwargs={"uuid": obj.uuid},
             request=self.context.get("request", ""),
         )

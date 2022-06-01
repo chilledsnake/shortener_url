@@ -1,10 +1,9 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from src.api.shortener import views
+from src.api.shortener.views import ShortenerViewSet
 
 app_name = "shortener"
 
-urlpatterns = [
-    path("", views.ShortenerCreateApiView.as_view(), name="create"),
-    path("<uuid:uuid>", views.ShortenerRetrieveApiView.as_view(), name="retrieve"),
-]
+router = DefaultRouter()
+router.register(r"", ShortenerViewSet, basename="shortener")
+urlpatterns = router.urls
